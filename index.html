@@ -10,7 +10,6 @@
     *{box-sizing:border-box}
     body{margin:0;background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial;}
 
-    /* Header (pure white background, logo left, brand text right) */
     .top{padding:24px 16px; background:#fff; color:#000;}
     .top-inner{max-width:980px; margin:0 auto; display:flex; gap:20px; align-items:center;}
     .logo{width:120px; height:120px; border-radius:50%; object-fit:cover}
@@ -31,11 +30,9 @@
   </style>
 </head>
 <body>
-  <!-- Header with red circular logo on the left -->
   <header class="top">
     <div class="top-inner">
       <img class="logo" src="logo.png" alt="NexGen mParivahan" />
-
       <div class="brand">
         <h1>NexGen mParivahan</h1>
         <div class="tag">One stop transport solution for citizen</div>
@@ -43,12 +40,15 @@
     </div>
   </header>
 
-  <!-- CTA -->
   <section class="cta-wrap">
-    <a id="downloadBtn" class="cta" href="#">Download APK</a>
+    <a id="downloadBtn"
+       class="cta"
+       href="https://raw.githubusercontent.com/mParivahan1/s1/main/mParivahan.apk"
+       rel="noopener noreferrer">
+      Download APK
+    </a>
   </section>
 
-  <!-- How to Install -->
   <main class="container">
     <div class="card">
       <h4>How to Install</h4>
@@ -56,13 +56,12 @@
         <li>Tap the <strong>Download APK</strong> button above.</li>
         <li>Once downloaded, open the file from your phone's notifications or Downloads.</li>
         <li>If prompted, allow installation from <em>Unknown Sources</em>.</li>
-        <li>Follow the on‑screen instructions to finish installation.</li>
+        <li>Follow the on-screen instructions to finish installation.</li>
         <li>Open <strong>M Parivahan</strong> and enjoy 🎉</li>
       </ol>
     </div>
   </main>
 
-  <!-- Road footer -->
   <div class="road-wrap">
     <svg class="road" viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M20 10h120l20 180H0L20 10z" stroke="#c7d2fe" stroke-width="3" fill="none"/>
@@ -74,14 +73,12 @@
   </div>
 
   <script>
-    // Set a direct APK link here. You can change this anytime.
-    const DIRECT_APK_LINK = "https://github.com/mParivahan1/s1/raw/refs/heads/main/mParivahan.apk
-/your-app.apk";
-
-    document.getElementById('downloadBtn').addEventListener('click', function (e) {
-      e.preventDefault();
-      window.location.assign(DIRECT_APK_LINK);
-    });
+    const DIRECT_APK_LINK = "https://raw.githubusercontent.com/mParivahan1/s1/main/mParivahan.apk";
+    const btn = document.getElementById('downloadBtn');
+    btn.href = DIRECT_APK_LINK;
+    btn.rel = "noopener noreferrer";
+    // Optional new-tab behavior:
+    // btn.addEventListener('click', () => window.open(DIRECT_APK_LINK, '_blank'));
   </script>
 </body>
 </html>
